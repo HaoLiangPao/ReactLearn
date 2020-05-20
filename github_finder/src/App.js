@@ -1,30 +1,39 @@
-// import React, { Component } from "react"
-
 import React, { Component } from "react";
+import Navbar from "./components/layout/Navbar";
+import Users from "./components/users/Users";
+import axios from "axios";
 import "./App.css";
 
-// Components can be classes or functions -> Hooks can kind of do both?
 class App extends Component {
-  // A lifecycle function
-  render() {
-    // JSX can have variables, functions
-    const name = "Hao Liang";
-    // Conditionals
-    const loading = false;
-    const showName = true;
+  state = {
+    users: [],
+    loading: false,
+  };
 
+  // lifecycle functions: we can fetch data from APIs at the time the app loads
+  async componentDidMount() {
+    // 1.Change state
+    this.setState({ loading: true });
+    // 2.Fetch data from GitHub API
+    // Promis syntax
+    // axios
+    //   .get("https://api.github.com/users")
+    //   .then((res) => console.log(res.data));
+    // Await syntax
+    const res = await axios.get("https://api.github.com/users");
+    // 3.Change back to normal state
+    this.setState({ users: res.data, loading: false });
+  }
+
+  render() {
     return (
-      // JSX: syntatic suger, under the hude it is javascript
-      // className <-> class
-      // for="" <-> htmlFor=""
-      // Always has to have one parent element: Fragment (ghost div element)
       <div className='App'>
-        {loading ? (
-          <h4>Loading...</h4>
-        ) : (
-          <h1>Hello {showName ? name.toUpperCase() : null} </h1>
-          // <h1>Hello {showName && name.toUpperCase()} </h1>
-        )}
+        {/* Developers can pass props within the tag
+        <Navbar title='Github Finder' icon='fab fa-github' /> */}
+        <Navbar title='Github Finder' icon='fab fa-github' />
+        <div className='container'>
+          <Users loading={this.state.loading} users={this.state.users} />
+        </div>
       </div>
     );
   }
