@@ -4,7 +4,7 @@ import Repos from "../repos/Repos";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export class User extends Component {
+class User extends Component {
   componentDidMount() {
     this.props.getUser(this.props.match.params.login);
     this.props.getUserRepos(this.props.match.params.login);

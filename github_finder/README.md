@@ -1,3 +1,49 @@
+
+# Github Finder 1.0 - (Class / Stateless Functions)
+
+## What it does:
+1. It searches github users through `Github API` according to the `username` to search typed by the user. 
+2. It displays available information fetched in a React website.
+
+## How it does:
+This projects was created with React, in a structure of 
+1. Structure of components
+2. [Live Demo]()
+
+
+## Special thanks to 
+_If you want to see the original files, please visit [Brad Traversy](https://www.traversymedia.com/ "Brad Traversy")'s website or check out all his courses available in [Udemy](https://www.udemy.com/user/brad-traversy/ "Brad's Courses on Udemy")_
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
