@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useEffect } from "react";
 import Spinner from "../layout/Spinner";
 import Repos from "../repos/Repos";
 import { Link } from "react-router-dom";
