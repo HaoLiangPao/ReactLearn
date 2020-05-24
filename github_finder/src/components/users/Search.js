@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react";
-import PropTypes from "prop-types";
 
 import GithubContext from "../../context/github/githubContext";
+import AlertContext from "../../context/alert/alertContext";
 
-const Search = ({ setAlert }) => {
+const Search = () => {
   const [text, setText] = useState("");
   // Initialize githubContext
   const githubContext = useContext(GithubContext);
+  const alertContext = useContext(AlertContext);
 
   // Onchange function, otherwise the input will be read-only since we assign default value to it.
   const onChange = (e) => setText(e.target.value);
@@ -16,15 +17,15 @@ const Search = ({ setAlert }) => {
     e.preventDefault();
     // Basic validation -> alert message
     if (text === "") {
-      setAlert("Please enter something", "light");
+      alertContext.setAlert("Please enter something", "light");
     } else {
       githubContext.searchUsers(text);
       setText("");
     }
   };
 
-  console.log("On submit");
-  console.log(githubContext);
+  // console.log("On submit");
+  // console.log(githubContext);
 
   return (
     <div>
@@ -53,10 +54,6 @@ const Search = ({ setAlert }) => {
       )}
     </div>
   );
-};
-
-Search.propTypes = {
-  setAlert: PropTypes.func.isRequired,
 };
 
 export default Search;
