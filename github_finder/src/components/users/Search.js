@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 
-const Search = ({ showClear, clearUsers, searchUsers, setAlert }) => {
+import GithubContext from "../../context/github/githubContext";
+
+const Search = ({ setAlert }) => {
   const [text, setText] = useState("");
+  // Initialize githubContext
+  const githubContext = useContext(GithubContext);
 
   // Onchange function, otherwise the input will be read-only since we assign default value to it.
-  // this.setState({ text: e.target.value });
   const onChange = (e) => setText(e.target.value);
 
-  // if use regular functions, we have to add ".bind(this)" at the end
   // OnSubmit function
   const onSubmit = (e) => {
     e.preventDefault();
@@ -16,10 +18,13 @@ const Search = ({ showClear, clearUsers, searchUsers, setAlert }) => {
     if (text === "") {
       setAlert("Please enter something", "light");
     } else {
-      searchUsers(text);
+      githubContext.searchUsers(text);
       setText("");
     }
   };
+
+  console.log("On submit");
+  console.log(githubContext);
 
   return (
     <div>
@@ -38,8 +43,11 @@ const Search = ({ showClear, clearUsers, searchUsers, setAlert }) => {
           className='btn btn-dark btn-block'
         />
       </form>
-      {showClear && (
-        <button className='btn btn-light btn-block' onClick={clearUsers}>
+      {githubContext.users.length > 0 && (
+        <button
+          className='btn btn-light btn-block'
+          onClick={githubContext.clearUsers}
+        >
           Clear
         </button>
       )}
@@ -48,9 +56,6 @@ const Search = ({ showClear, clearUsers, searchUsers, setAlert }) => {
 };
 
 Search.propTypes = {
-  searchUsers: PropTypes.func.isRequired,
-  clearUsers: PropTypes.func.isRequired,
-  showClear: PropTypes.bool.isRequired,
   setAlert: PropTypes.func.isRequired,
 };
 
