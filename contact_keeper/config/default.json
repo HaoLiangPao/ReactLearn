@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://Hao123:contactkeeper@contactkepper-swtac.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "HaoLiang"
+}
