@@ -1,6 +1,13 @@
 const express = require("express");
+const connectDB = require("./config/db");
 
 const app = express();
+
+// Connect Database
+connectDB();
+
+// Init Middleware: parse data passed in body
+app.use(express.json({ extended: false }));
 
 // Default Route
 app.get("/", (req, res) =>
