@@ -16,8 +16,10 @@ This projects was created with React, in a structure of
 
 ## NPM commands to set up the environment
 
+### Backend Environment Set up
+
 1. **(Initialize package.json)**
-   
+
    ```bash
    npm init -y
    ```
@@ -40,37 +42,136 @@ This projects was created with React, in a structure of
    ```bash
    npm i -D nodemon concurrently   
    ```
+
       1. `nodemon`: keep watching the server, so no need to mannually restart it
       2. `concurrently`: run backend and frontend server at the same time
 
+4. **Add scripts into package.json**
+
+   ```json
+   {
+     "scripts": {
+     "start": "node server.js",
+     "server": "nodemon server.js"
+   	},
+   }
+   ```
+
+    When to run scripts:
+
+   1. Start the server, ask it to automatically run everytime the server.js changes (no need to run below command mannually everytime)
+
+      ```bash
+      npm server.js
+      ```
+
+      **Instead**, we just have to run
+
+      ```bash
+      npm run server
+      ```
+
+      
+
+   2. Ssdfl
+
+5. 
+
+
+
+
+
+### Frontend Environment Set up
+
+1. **Install React in `client` folder**
+
+   ```bash
+   npx create-react-app client
+   ```
+
+2. **Use `concurrently` to run both front-end server and back-end server**
+
+   Some scripts to be added to package.json in root folder (back-end)
+
+   `root/package.json ` (back-end)
+
    
 
-   4. **Add scripts into package.json**
+   ```json
+   {
+     "scripts": {
+       "start": "node server.js",
+       "server": "nodemon server.js",
+       "client": "npm start --prefix client",
+       "clientinstall": "npm install --prefix client",
+       "dev": "concurrently \"npm run server\" \"npm run client\""
+     },
+   }
+   ```
 
-  ```json
-  "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js"
-  },
-  ```
+   so that we can run servers on both ends by the command below
 
-  When to run scripts:
+   ```bash
+   npm run dev
+   ```
 
-  1. Start the server, ask it to automatically run everytime the server.js changes (no need to run below command mannually everytime)
+3. Shorten the process of hitting endpoints at client side
 
-     ```bash
-     npm server.js
-     ```
+   Add *proxy* value to client `package.json`, to ease the process of hiting the endpoint
 
-     **Instead**, we just have to run
+    `root/client/package.json ` (front-end)
 
-     ```bash
-     npm run server
-     ```
+   ```json
+     {
+       "proxy": "http://localhost:5000"
+     }
+   ```
 
-     
+4. 
 
-  2. Sdfsd
+5. Add React dependencies
+
+   ```bash
+   npm i axios react-router-dom uuid react-transition-group
+   ```
+
+      1. `axios`: use HTTP client
+      2. `react-router-dom`: 
+      3. `uuid`: id generator
+      4. `react-transition-group`: animation
+
+6. Pdf
+
+
+
+
+
+sdlfk
+
+**Use `concurrently` to run both front-end server and back-end server**
+
+
+
+
+
+
+
+
+
+
+
+Sdfsdf
+
+```bash
+npm i express bcryptjs jsonwebtoken config express-validator mongoose
+```
+
+   1. `express`: handle HTTP routes
+   2. `bcryptjs`: handle hashing passwords
+   3. `jsonwebtoken`: create JWT (Json Web Token) for authentication, access protected route
+   4. `config`: deal with global variables
+   5. `express`-validator: validate input data
+   6. `mongoose`: abstraction layer to deal with database
 
 
 
