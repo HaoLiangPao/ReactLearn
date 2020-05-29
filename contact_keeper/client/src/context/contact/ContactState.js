@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import uuid from "uuid"; // since we are using some hard-coded data before connect to the back end
+import { v4 as uuidv4 } from "uuid"; // since we are using some hard-coded data before connect to the back end
 import ContactContext from "./contactContext";
 import contactReducer from "./contactReducer";
 
@@ -46,6 +46,8 @@ const ContactState = (props) => {
         type: "personal",
       },
     ],
+    current: null, // a place for edit contact
+    filtered: null,
   };
 
   //
@@ -53,23 +55,54 @@ const ContactState = (props) => {
 
   ////// All Actions /////
   // Add Contact
+  const addContact = (contact) => {
+    contact.id = uuidv4(); // use uuid to get a id ()
+    dispatch({ type: ADD_CONTACT, payload: contact });
+  };
 
   // Delete Contact
+  const deleteContact = (id) => {
+    dispatch({ type: DELETE_CONTACT, payload: id });
+  };
 
   // Set Current Contact
+  const setCurrent = (contact) => {
+    dispatch({ type: SET_CURRENT, payload: contact });
+  };
 
   // Clear Current Contact
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT, payload: null });
+  };
 
   // Update Contact
+  const updateContact = (contact) => {
+    dispatch({ type: UPDATE_CONTACT, payload: contact });
+  };
 
   // Filter Contacts
+  const filterContacts = (text) => {
+    dispatch({ type: FILTER_CONTACTS, payload: text });
+  };
 
   // Clear Filter
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER, payload: null });
+  };
 
   return (
     <ContactContext.Provider
       value={{
         contacts: state.contacts,
+        current: state.current,
+        filtered: state.filtered,
+        addContact,
+        deleteContact,
+        setCurrent,
+        clearCurrent,
+        updateContact,
+        filterContacts,
+        clearFilter,
       }}
     >
       {props.children}

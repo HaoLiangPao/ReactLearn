@@ -154,7 +154,7 @@ sdlfk
 
 
 
-
+加一个feature （delete contact 不clear update，只有current= 要delete的contact的时候才clear）
 
 
 
