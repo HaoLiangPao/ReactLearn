@@ -45,10 +45,10 @@ const ContactForm = () => {
 
     if (current === null) {
       // Add the new contact to ContactContext
-      contactContext.addContact(contact);
+      addContact(contact);
     } else {
       // Update the existing contact
-      contactContext.updateContact(contact);
+      updateContact(contact);
     }
 
     // Clear the local contact for next contact entry
