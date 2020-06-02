@@ -1,4 +1,4 @@
-# 																	Contact Keeper 1.0
+# Contact Keeper 1.0
 
 ## Introduction
 
@@ -13,9 +13,9 @@ Contact Manager App
 
 This projects was created with React, in a structure of
 
-| Front-end                                                 | Back-end                                                | DEmo          |
-| --------------------------------------------------------- | ------------------------------------------------------- | ------------- |
-| [File Structure](FileStructure(Front-end).md "Front-end") | [File Structure](FileStructure(Back-end).md "Back-end") | [Live Demo]() |
+| Frontend                                                                   | Backend                                                                 | DEmo          |
+| -------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------- |
+| [File Structure](</contact_keeper/FileStructure(Frontend).md> "Front-end") | [File Structure](</contact_keeper/FileStructure(Backend).md> "Backend") | [Live Demo]() |
 
 ---
 
@@ -35,31 +35,31 @@ npm init -y
 npm i express bcryptjs jsonwebtoken config express-validator mongoose
 ```
 
-   - `express`: handle HTTP routes
-   - `bcryptjs`: handle hashing passwords
-   - `jsonwebtoken`: create JWT (Json Web Token) for authentication, access protected route
-   - `config`: deal with global variables
-   - `express-validator`: validate input data
-   - `mongoose`: abstraction layer to deal with database
+- `express`: handle HTTP routes
+- `bcryptjs`: handle hashing passwords
+- `jsonwebtoken`: create JWT (Json Web Token) for authentication, access protected route
+- `config`: deal with global variables
+- `express-validator`: validate input data
+- `mongoose`: abstraction layer to deal with database
 
 **3. Development Dependencies**
 
 ```bash
-npm i -D nodemon concurrently   
+npm i -D nodemon concurrently
 ```
 
 - `nodemon`: (Back-end) keep watching the server, so no need to mannually restart it
 
-- `concurrently`: (Full-stack) run backend and frontend server at the same time 
+- `concurrently`: (Full-stack) run backend and frontend server at the same time
 
 1. Add scripts into package.json
 
    ```json
    {
      "scripts": {
-     "start": "node server.js",
-     "server": "nodemon server.js"
-   	},
+       "start": "node server.js",
+       "server": "nodemon server.js"
+     }
    }
    ```
 
@@ -67,7 +67,7 @@ npm i -D nodemon concurrently
    npm run server
    ```
 
-   Notes: *no need to run ~~`npm run server`~~ mannually everytime server.js changes. Instead, we just have to run `npm run server`.* **It will monitoring the server.js and resart the server everytime it changes.**
+   Notes: _no need to run ~~`npm run server`~~ mannually everytime server.js changes. Instead, we just have to run `npm run server`._ **It will monitoring the server.js and resart the server everytime it changes.**
 
 ### Front-end Environment & Full-stack Environment Set up
 
@@ -81,7 +81,7 @@ npx create-react-app client
 
 Some scripts to be added to package.json in root folder (back-end)
 
-`root/package.json ` (back-end)
+`root/package.json` (back-end)
 
 ```json
 {
@@ -91,7 +91,7 @@ Some scripts to be added to package.json in root folder (back-end)
     "client": "npm start --prefix client",
     "clientinstall": "npm install --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
-  },
+  }
 }
 ```
 
@@ -103,14 +103,14 @@ npm run dev
 
 **3. Use proxy in `client` folder**
 
-Add *proxy* value to client `package.json`, to ease the process of hiting the endpoint
+Add _proxy_ value to client `package.json`, to ease the process of hiting the endpoint
 
- `root/client/package.json ` (front-end)
+`root/client/package.json` (front-end)
 
 ```json
-  {
-    "proxy": "http://localhost:5000"
-  }
+{
+  "proxy": "http://localhost:5000"
+}
 ```
 
 **4. Add React dependencies**
@@ -119,33 +119,17 @@ Add *proxy* value to client `package.json`, to ease the process of hiting the en
 npm i axios react-router-dom uuid react-transition-group
 ```
 
-   - `axios`: use HTTP client
-   - `react-router-dom`: 
-   - `uuid`: id generator
-   - `react-transition-group`: animation
+- `axios`: use HTTP client
+- `react-router-dom`:
+- `uuid`: id generator
+- `react-transition-group`: animation
 
 ---
 
 ## To Do
 
 - [ ] don't clear update-form when deleting a contact, only clear it when deleting the `current` contact
-- [ ] route/contacts.js:  add validation of update form (avoid overwritting with blanks)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [ ] route/contacts.js: add validation of update form (avoid overwritting with blanks)
 
 ---
 
