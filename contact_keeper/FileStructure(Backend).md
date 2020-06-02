@@ -1,6 +1,4 @@
-
-
-# Back-end File Structure
+# Backend File Structure
 
 ## Overview of the file structure
 
