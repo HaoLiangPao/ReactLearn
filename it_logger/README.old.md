@@ -107,16 +107,26 @@ npm i -D json-server concurrently
 }
 ```
 
-**6. Install `materialize` for preset css styles**
+**6. Install `materialize` ,`moment`, `react-moment`, `redux`, `react-redux`, `redux-thunk`, redux-devtools-extension**
 
 ```bash
-npm i materialize-css
+npm i materialize-css moment react-moment redux react-redux redux-thunk
 ```
 
-**7. Install `moment`, `react-moment` for time format and display**
+- `materialize-css`: to use some preset css styles
+- `moment`: time format and display
+- `react-moment`: adapt moment to `react`
+- `redux`: third-party state management package
+- `react-redux`: adapt redux to `react`
+- `redux-thunk`: a piece of middleware for redux to handle asynchronous functions
+- `redux-devtools-extension`: help us to use redux-devtools in Google-Chrome
+
+
+
+**7. Install  **
 
 ```bash
-npm i moment react-moment
+npm i 
 ```
 
 
