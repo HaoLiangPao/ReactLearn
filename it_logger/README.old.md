@@ -139,7 +139,9 @@ npm i
 
 
 
+BaseLine:
 
+1. Components should only contains the structure of UI, calling statements of functions defined in action.js
 
 ---
 
