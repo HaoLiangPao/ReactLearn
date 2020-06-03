@@ -19,59 +19,11 @@ This projects was created with React, in a structure of
 
 ---
 
-## Environment Setup
-
-### Back-end Environment Set up
-
-**1. Initialize package.json** (say yes to all inputs)
-
-```bash
-npx create-react-app .
-```
-
-**2. General Dependencies**
-
-```bash
-npm i -D json-server concurrently
-```
-
-- `express`: handle HTTP routes
-- `bcryptjs`: handle hashing passwords
-- `jsonwebtoken`: create JWT (Json Web Token) for authentication, access protected route
-- `config`: deal with global variables
-- `express-validator`: validate input data
-- `mongoose`: abstraction layer to deal with database
-
-**3. Development Dependencies**
-
-```bash
-npm i -D nodemon concurrently
-```
-
-- `nodemon`: (Back-end) keep watching the server, so no need to mannually restart it
-
-- `concurrently`: (Full-stack) run backend and frontend server at the same time
-
-1. Add scripts into package.json
-
-   ```json
-   {
-     "scripts": {
-       "start": "node server.js",
-       "server": "nodemon server.js"
-     }
-   }
-   ```
-
-   ```bash
-   npm run server
-   ```
-
-   Notes: _no need to run ~~`npm run server`~~ mannually everytime server.js changes. Instead, we just have to run `npm run server`._ **It will monitoring the server.js and resart the server everytime it changes.**
+## Environment Set up
 
 ### Frontend Environment & Full-stack Environment Set up
 
-**1. Install React in current folder** (don't mess up with dependencies!!!)
+**1. Install React in current folder** (don't mess up with the folders where dependencies installed!!!)
 
 ```bash
 npx create-react-app .
@@ -82,7 +34,63 @@ npx create-react-app .
 ```bash
 npm i -D json-server concurrently
 ```
+- `json-server`: (Back-end) an open-source backend fake server which provides many useful APIs
+
+- `concurrently`: (Full-stack) run backend and frontend server at the same time
+
 **3. Add fake data into `db.json` **
+
+```json
+{
+  "logs": [
+    {
+      "id": 1,
+      "message": "Changed network card in server 007",
+      "attention": false,
+      "tech": "Sam Smith",
+      "date": "2019-05-31T15:46:10.179Z"
+    },
+    {
+      "id": 2,
+      "message": "Fixed hard drive on workstation 002",
+      "attention": false,
+      "tech": "John Doe",
+      "date": "2019-05-31T16:18:04.245Z"
+    },
+    {
+      "message": "1122 wireless down",
+      "attention": true,
+      "tech": "Sara Wilson",
+      "date": "2019-05-31T15:46:48.690Z",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "message": "Workstation 026 is up and running",
+      "attention": false,
+      "tech": "Sara Wilson",
+      "date": "2019-05-31T19:57:35.544Z"
+    }
+  ],
+  "techs": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Doe"
+    },
+    {
+      "id": 2,
+      "firstName": "Sam",
+      "lastName": "Smith"
+    },
+    {
+      "id": 3,
+      "firstName": "Sara",
+      "lastName": "Wilson"
+    }
+  ]
+}
+```
 
 **4. Add some script to `package.json` **
 
@@ -98,6 +106,8 @@ npm i -D json-server concurrently
   }
 } 
 ```
+
+Notes: _no need to run ~~`npm start`~~ and ~~`npm run json-server`~~ mannually everytime we want to run the whole application. Instead, we just have to run `npm run dev`._ It will monitoring the index.js and db.json and resart the react and server everytime they change.
 
 **5. Add proxy to `package.json` **
 
@@ -121,9 +131,7 @@ npm i materialize-css moment react-moment redux react-redux redux-thunk
 - `redux-thunk`: a piece of middleware for redux to handle asynchronous functions
 - `redux-devtools-extension`: help us to use redux-devtools in Google-Chrome
 
-
-
-**7. Install  **
+**7. Create boilerplates in order to use `redux`  **
 
 ```bash
 npm i 
