@@ -1,27 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import LogItem from "./LogItem";
 import Preloader from "../layout/Preloader";
+import PropTypes from "prop-types";
+import { getLogs } from "../../actions/logActions"; // import as props
 
-const Logs = () => {
-  // Set initial states
-  const [logs, setLogs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+// Destructuring app-level state props
+const Logs = ({ log: { logs, loading }, getLogs }) => {
   // Lifecycle functions, run as the component initialize
   useEffect(() => {
     getLogs();
     // eslint-disable-next-line
   }, []);
 
-  const getLogs = async () => {
-    setLoading(true);
-    const res = await fetch("/logs");
-    const data = await res.json();
-
-    setLogs(data);
-    setLoading(false);
-  };
-
+  // we set logs to null in initial state, the async function needs some time to get data back from backend, set logs===null to show preloading while fetching the data
   if (loading || logs === null) {
     return <Preloader></Preloader>;
   }
@@ -40,4 +32,13 @@ const Logs = () => {
   );
 };
 
-export default Logs;
+Logs.propTypes = {
+  log: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  // Get state from index.js in reducers?
+  log: state.log,
+});
+
+export default connect(mapStateToProps, { getLogs })(Logs);
