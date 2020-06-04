@@ -7,6 +7,7 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_LOG,
+  SEARCH_LOGS,
 } from "./types";
 
 // Create actions
@@ -40,7 +41,7 @@ export const getLogs = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOGS_ERROR,
-      payload: error.response.data,
+      payload: error.response.statusText,
     });
   }
 };
@@ -66,7 +67,7 @@ export const addLog = (log) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOGS_ERROR,
-      payload: error.response.data,
+      payload: error.response.statusText,
     });
   }
 };
@@ -85,7 +86,7 @@ export const deleteLog = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOGS_ERROR,
-      payload: error.response.data,
+      payload: error.response.statusText,
     });
   }
 };
@@ -126,10 +127,9 @@ export const updateLog = (log) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    console.error(error.response.data);
     dispatch({
       type: LOGS_ERROR,
-      payload: error.response.data,
+      payload: error.response.statusText,
     });
   }
 };
@@ -138,4 +138,24 @@ export const setLoading = () => {
   return {
     type: SET_LOADING,
   };
+};
+
+// Search logs
+export const searchLogs = (text) => async (dispatch) => {
+  try {
+    setLoading();
+
+    const res = await fetch(`/logs?q=${text}`);
+    const data = await res.json();
+
+    dispatch({
+      type: SEARCH_LOGS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: LOGS_ERROR,
+      payload: error.response.statusText,
+    });
+  }
 };
