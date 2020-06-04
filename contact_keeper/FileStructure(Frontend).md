@@ -71,9 +71,13 @@ Context:
 
 Context provides a way to pass data through the component tree without having to pass props down manually at every level. In a typical React application, data is passed top-down (parent to child) via props, but this can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
 
-Reducer:\*
+Reducer:
 
-Seperate "updating state" functionality from state files to increase the readability.
+As it is a app-level state, all changes of state variables happens here in reducer and it will change components corresponding to the changes. Alogorithums that decide which components need to be rerendered also applied here after reducer changes the state. In this projects, reducers were seperated to split the "updating state" functionality from state files to increase the readability. 
+
+> *How do `Context` & `Reducer` work together?*
+
+> *It is a way to achive app-level state management. Things are sent down from the state through the reducer and things are sent up through actions. So if we want to add a user, we <u>call an action</u> and then that <u>will dispatch to the reducer</u> and <u>reducer will decide how to manipulate</u> the rest of the application (the rest of the components in UI).*
 
 Component:
 
@@ -88,3 +92,4 @@ A React **Element** is what gets **returned** from components. It’s an object 
 ![Frontend_Process](./frontend_structure.png)
 
 ---
+
