@@ -6,11 +6,11 @@ import PropTypes from "prop-types";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const LogItem = ({
-  log: { id, tech, data, message, attention },
-  log,
-  deleteLog,
-}) => {
+//
+const LogItem = ({ log, deleteLog, setCurrent }) => {
+  // Destructuring
+  const { id, tech, data, message, attention } = log;
+
   const onDelete = () => {
     deleteLog(id);
     M.toast({ html: `Log ${id} Deleted` });
