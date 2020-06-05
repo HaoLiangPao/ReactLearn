@@ -164,10 +164,15 @@ if (process.env.NODE_ENV === "production") {
 
 ```bash
 heroku login
-heroku
+heroku create
+heroku git:remote -a (tranquil-waters-53953)
+git push heroku master
 ```
 
-
+- Login: login to your heroku account, access to your heroku database
+- Create: create a new application for deployment in heroku
+- `(tranquil-waters-53953)` : is the name of your application created by heroku (*it varies every time*)
+- Push: deploy the application on heroku
 
 
 
