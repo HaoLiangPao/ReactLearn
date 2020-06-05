@@ -126,6 +126,61 @@ npm i axios react-router-dom uuid react-transition-group
 
 ---
 
+## Heroku Deployment
+
+1.Create an account in Heroku and install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+
+2.Add a code snippet into `server.js` 
+
+* *Tell heroku which html file to look at*
+
+```javascript
+// Serve static assests (React) in production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("client/build"));
+  // Get anything except the three 'Defined Routes above'
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+  );
+}
+```
+
+3.Create another config file `production.js` (*usually different database, secret for development and deployment*)
+
+4.Add a script in `package.json` in root dir
+
+- *Temperarely get out of production in order to build the React app*
+
+```json
+{
+  "scripts": {
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  }
+}
+```
+
+5.Run heroku commands and customed script command in terminal
+
+```bash
+heroku login
+heroku
+```
+
+
+
+
+
+
+
+---
+
+
+
+
+
+
+
 ## To Do
 
 - [ ] don't clear update-form when deleting a contact, only clear it when deleting the `current` contact
