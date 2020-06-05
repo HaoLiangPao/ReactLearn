@@ -4,6 +4,7 @@ import {
   DELETE_TECH,
   SET_LOADING,
   TECHS_ERROR,
+  DELETE_LOG,
 } from "./types";
 
 // Get techs from server
@@ -57,4 +58,25 @@ export const setLoading = () => {
   return {
     type: SET_LOADING,
   };
+};
+
+// Delete a tech
+export const deleteTech = (id) => async (dispatch) => {
+  try {
+    setLoading();
+
+    // interaction with the server
+    await fetch(`/techs/${id}`, { method: "delete" });
+
+    // pass the data to reducer
+    dispatch({
+      type: DELETE_TECH,
+      payload: id,
+    });
+  } catch (error) {
+    dispatch({
+      type: TECHS_ERROR,
+      payload: error.response.statusText,
+    });
+  }
 };
